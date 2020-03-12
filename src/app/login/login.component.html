@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-12 mt-5">
+
+      <div class="col-md-12 col-sm-12">
+        <!-- Default form login -->
+        <form class="text-center border border-light p-5" (ngSubmit)="loginForm(password)" #login="ngForm">
+            <p *ngIf="errorMessage" class="mt-20">
+              <ngb-alert type="danger" [dismissible]="false">{{ errorMessage }}</ngb-alert>
+            </p>
+
+          <p class="h4 mb-4">Sign in</p>
+
+          <!-- Email -->
+          <input
+            type="email"
+            id="email"
+            class="form-control mb-4"
+            placeholder="E-mail"
+            name="email"
+            ngModel
+            required
+            email>
+
+          <!-- Password -->
+          <input
+            type="password"
+            id="password"
+            class="form-control mb-4"
+            placeholder="Password"
+            name="password"
+            ngModel
+            required
+            #password="ngModel">
+            <span *ngIf="password.dirty && password.value.length<6">Password should be greater than 6 character.</span><br/>
+          <!-- Sign in button -->
+          <button color="info" block="true" class="btn btn-primary" type="submit" [disabled]="!login.valid">Sign in</button>
+        </form>
+        <!-- Default form login -->
+      </div>
+    </div>
+  </div>
+</div>
