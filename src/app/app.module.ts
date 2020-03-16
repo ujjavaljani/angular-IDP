@@ -12,9 +12,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './utills/auth-guard.service';
 import { LoaderComponent } from './loader/loader.component';
+import { HeaderComponent } from './header/header.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, LoaderComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, LoaderComponent, HeaderComponent, BookingComponent],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule, HttpClientModule],
   providers: [APIService, AuthService, AuthGuard, LoaderService],
   bootstrap: [AppComponent]

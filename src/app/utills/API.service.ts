@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { AuthService } from './auth.service';
 // import 'rxjs/Rx';
 @Injectable()
 export class APIService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
   API(
     httpMethod: any,
     APIEndPoint: string,
@@ -12,7 +13,8 @@ export class APIService {
   ) {
     const reqHeaders = {};
     if (authRequire) {
-      reqHeaders['auth-token'] = 'test';
+      reqHeaders['x-access-token'] = this.authService.loginData.token;
+      // reqHeaders['x-access-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWQ4YjU4OGVhMjdjOTExMGEwMDU5OGVhIiwiaWF0IjoxNTg0MDgwMjgzLCJleHAiOjE1ODQxNjY2ODN9.XqAWK8quoPkneV-cHgwnjH491MPGFM0DowS7jJxAYA4';
     }
     const APIHeaders = new HttpHeaders(reqHeaders);
     if (httpMethod === 'GET') {

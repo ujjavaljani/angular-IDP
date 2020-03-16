@@ -1,0 +1,32 @@
+.plan-journy{
+  background: url('../../assets/images/bg.jpg');
+  background-size: cover;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  position: fixed;
+  bottom: 0;
+  top: 55px;
+  @media screen and (max-width: 768px) {
+    overflow-y: scroll;
+  }
+  .title.white{
+    color: #ffffff;
+  }
+  form{
+    width: 60%;
+    margin: 0 auto;
+    background: #00000059;
+    border-radius: 7px;
+    color: #FFC107;
+    .form-group{
+      label{
+        text-align: left;
+        width: 100%;
+      }
+      .form-control{
+        width: 100%;
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@ export class LoginComponent {
     private loaderService: LoaderService
   ) {}
   loginForm() {
-    console.log(this.loginData.value);
+    // console.log(this.loginData.value);
     this.loaderService.showLoading();
     this.APIService.API(
       HTTP_POST,
@@ -36,7 +36,7 @@ export class LoginComponent {
         if (response && response.data) {
           this.authService.login(response.data);
           this.errorMessage = '';
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/my-bookings']);
         }
       },
       error => {
@@ -45,6 +45,10 @@ export class LoginComponent {
           this.errorMessage = error.error.error;
         } else if (error.statusText) {
           this.errorMessage = error.statusText;
+        } else if (error.error) {
+          this.errorMessage = error.error;
+        } else {
+          this.errorMessage = 'Something went wrong.';
         }
       }
     );

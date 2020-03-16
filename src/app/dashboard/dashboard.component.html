@@ -1,1 +1,41 @@
-<p>dashboard works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-sm-12 mt-5">
+
+      <div class="col-md-12 col-sm-12">
+        <!-- Booking Data -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Sr No.</th>
+              <th scope="col">Trip Type</th>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
+              <th scope="col">Travel Date</th>
+              <th scope="col">Return Date</th>
+              <th scope="col">Total Passengers</th>
+              <th scope="col">Travel Class</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let booking of bookings; index as i">
+              <th scope="row">{{i+1}}</th>
+              <td>{{booking.tripType}}</td>
+              <td>{{booking.fromPlace}}</td>
+              <td>{{booking.toPlace}}</td>
+              <td>{{booking.travelDate}}</td>
+              <td>{{booking.returnDate}}</td>
+              <td>{{booking.adultsCount + booking.childrenCount + booking.infantsCount}}</td>
+              <td>{{booking.travelClass}}</td>
+              <td>{{booking.status}}</td>
+              <td><button class="btn btn-danger"  *ngIf="booking.status != 'cancelled'" (click)="cancelBooking(booking);">Cancel</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <!--Booking Data -->
+      </div>
+    </div>
+  </div>
+</div>

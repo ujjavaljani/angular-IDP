@@ -1,0 +1,140 @@
+<div class="plan-journy">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 col-sm-12 ml-5">
+        <h2 class="title white text-center">Flight Ticket Booking</h2>
+        <form
+          class="text-center p-5"
+          (ngSubmit)="bookFlight()"
+          #bookingForm="ngForm"
+        >
+          <p *ngIf="errorMessage" class="mt-20">
+            <ngb-alert type="danger" [dismissible]="false">{{
+              errorMessage
+            }}</ngb-alert>
+          </p>
+          <div class="form-row">
+            <div class="form-group col-md-6 col-sm-12 ">
+              <label for="from">From</label>
+              <input
+                type="text"
+                id="from"
+                class="form-control"
+                placeholder="Type Departure City"
+                name="fromPlace"
+                ngModel
+                required
+              />
+            </div>
+            <div class="form-group col-md-6 col-sm-12 ">
+              <label for="to">To</label>
+              <input
+                type="text"
+                id="to"
+                class="form-control"
+                placeholder="Type Destination City"
+                name="toPlace"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="my-auto col-md-4 col-sm-12">
+              <input
+                type="checkbox"
+                name="tripType"
+                ngModel
+                #returnJourny="ngModel"
+              />
+              <label for="returnDate">Return Journy</label>
+            </div>
+            <div class="form-group col-md-4 col-sm-12">
+              <label for="fromDate">Depart</label>
+              <input
+                type="date"
+                id="fromDate"
+                class="form-control"
+                name="travelDate"
+                min="{{ todayDate | date: 'yyyy-MM-dd' }}"
+                ngModel
+                required
+                #fromDate="ngModel"
+              />
+            </div>
+            <div
+              class="form-group col-md-4 col-sm-12"
+              *ngIf="returnJourny.value"
+            >
+              <label for="returnDate">Return Date</label>
+              <input
+                type="date"
+                id="returnDate"
+                class="form-control"
+                name="returnDate"
+                [min]="fromDate.value"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4 col-sm-12">
+              <label for="travelClass">Travel Class</label>
+              <select
+                class="form-control"
+                id="travelClass"
+                name="travelClass"
+                value=""
+                ngModel
+                required
+              >
+                <option vale="" selected>Choose...</option>
+                <option value="economy">Economy</option>
+                <!-- <option value="premium economy">Premium Economy</option> -->
+                <option value="business">Business</option>
+                <!-- <option value="first class">First Class</option> -->
+              </select>
+            </div>
+            <div class="form-group col-md-4 col-sm-12">
+              <label for="adultCount">Adult</label>
+              <input
+                type="number"
+                id="adultCount"
+                class="form-control"
+                name="adultsCount"
+                min="0"
+                value="0"
+                ngModel
+                required
+              />
+            </div>
+            <div class="form-group col-md-4 col-sm-12">
+              <label for="childCount">Child</label>
+              <input
+                type="number"
+                id="childCount"
+                class="form-control"
+                name="childrenCount"
+                min="0"
+                value="0"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <br />
+          <button
+            color="info"
+            block="true"
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!bookingForm.valid"
+          >
+            Book
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

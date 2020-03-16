@@ -4,7 +4,7 @@
 
       <div class="col-md-12 col-sm-12">
         <!-- Default form login -->
-        <form class="text-center border border-light p-5" (ngSubmit)="loginForm(password)" #login="ngForm">
+        <form class="text-center border border-light p-5" (ngSubmit)="loginForm()" #login="ngForm">
             <p *ngIf="errorMessage" class="mt-20">
               <ngb-alert type="danger" [dismissible]="false">{{ errorMessage }}</ngb-alert>
             </p>
